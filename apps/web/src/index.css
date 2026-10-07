@@ -1,0 +1,129 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/jetbrains-mono";
+
+@theme inline {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-sub: var(--sub);
+  --color-muted: var(--muted);
+  --color-brand: var(--brand);
+  --color-brand-ink: var(--brand-ink);
+  --color-brand-soft: var(--brand-soft);
+  --color-good: var(--good);
+  --color-good-soft: var(--good-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-bad: var(--bad);
+  --color-bad-soft: var(--bad-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --shadow-card: 0 1px 2px rgb(16 24 40 / 0.04), 0 1px 3px rgb(16 24 40 / 0.06);
+  --shadow-pop: 0 12px 32px -8px rgb(16 24 40 / 0.18), 0 4px 12px -4px rgb(16 24 40 / 0.1);
+}
+
+:root {
+  --bg: #f5f6f8;
+  --surface: #ffffff;
+  --surface-2: #f1f3f6;
+  --line: #e3e7ec;
+  --ink: #0f1a2a;
+  --sub: #5b6778;
+  --muted: #98a2b3;
+  --brand: #0f766e;
+  --brand-ink: #ffffff;
+  --brand-soft: #e4f3f0;
+  --good: #067647;
+  --good-soft: #e8f7ef;
+  --warn: #b54708;
+  --warn-soft: #fff4e0;
+  --bad: #b42318;
+  --bad-soft: #fdecea;
+  --info: #1d4ed8;
+  --info-soft: #e8efff;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --bg: #0b1016;
+  --surface: #121a23;
+  --surface-2: #19232e;
+  --line: #243140;
+  --ink: #e8edf3;
+  --sub: #94a3b5;
+  --muted: #5f6f81;
+  --brand: #2dd4bf;
+  --brand-ink: #04211d;
+  --brand-soft: rgb(45 212 191 / 0.13);
+  --good: #4ade80;
+  --good-soft: rgb(74 222 128 / 0.12);
+  --warn: #fbbf24;
+  --warn-soft: rgb(251 191 36 / 0.12);
+  --bad: #f87171;
+  --bad-soft: rgb(248 113 113 / 0.13);
+  --info: #7aa2ff;
+  --info-soft: rgb(122 162 255 / 0.14);
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-feature-settings: "cv11", "ss01";
+  -webkit-font-smoothing: antialiased;
+}
+::selection {
+  background: var(--brand);
+  color: var(--brand-ink);
+}
+.num {
+  font-variant-numeric: tabular-nums;
+}
+.mono {
+  font-family: var(--font-mono);
+}
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+/* one-shot, functional entrance for route content and dialogs */
+.enter {
+  animation: enter 160ms ease-out both;
+}
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .enter {
+    animation: none;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white;
+  }
+  .print-card {
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
+  }
+}
